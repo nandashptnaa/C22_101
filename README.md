@@ -1,16 +1,11 @@
-# c22_101
+# Kelompok Capstone Dicoding SIB Batch 3 C22_101
 
-A new Flutter project.
+P269Y0626 - Nanda Sheptiana
+P248Y0523 - Elda Aqil Usrotin
+P319Y0861 - Retno Sekar Dinarsih
+P269X0628 - Taufiq July Kurniawan
 
-## Getting Started
+Tema : Solusi Pengelolaan Kehidupan yang Berkelanjutan
+Judul : Adukan Saja!
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Sebuah aplikasi dimana pengguna dapat melaporkan atau mengadu kepada pihak yang menangani kasus tindakan kekerasan atau tindakan yang serupa. Aplikasi ini memiliki 3 user yaitu pengguna, admin, dan super admin.
