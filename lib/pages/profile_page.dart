@@ -1,16 +1,13 @@
-import 'package:c22_101/pages/auth/login_page.dart';
-import 'package:c22_101/pages/home_chat_page.dart';
 import 'package:c22_101/pages/main_page.dart';
-import 'package:c22_101/pages/pengaduan_page.dart';
 import 'package:c22_101/service/auth_service.dart';
+import 'package:c22_101/shared/constants.dart';
 import 'package:c22_101/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 
 class ProfilePage extends StatefulWidget {
   String userName;
   String email;
-  ProfilePage({Key? key, required this.email, required this.userName})
-      : super(key: key);
+  ProfilePage({super.key, required this.email, required this.userName});      
 
   @override
   State<ProfilePage> createState() => _ProfilePageState();
@@ -21,8 +18,11 @@ class _ProfilePageState extends State<ProfilePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Constants().primaryColor,
+      extendBodyBehindAppBar: true,
       appBar: AppBar(
-        backgroundColor: Theme.of(context).primaryColor,
+        centerTitle: true,
+        backgroundColor: Colors.transparent,
         elevation: 0,
         title: const Text(
           "Profile",

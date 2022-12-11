@@ -1,9 +1,7 @@
-import 'package:c22_101/chating/profile.dart';
 import 'package:c22_101/common/decoration.dart';
 import 'package:c22_101/common/image_view.dart';
 import 'package:c22_101/common/style.dart';
 import 'package:c22_101/pages/main_page.dart';
-import 'package:c22_101/pages/pengaduan_page.dart';
 import 'package:c22_101/shared/constants.dart';
 import 'package:c22_101/utils/color.dart';
 import 'package:c22_101/utils/utils.dart';
@@ -11,8 +9,6 @@ import 'package:c22_101/utils/utils_image.dart';
 import 'package:c22_101/widgets/widgets.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get.dart';
 
 class FormPengaduan extends StatefulWidget {
@@ -188,7 +184,7 @@ class _FormPengaduanState extends State<FormPengaduan> {
                                             MainAxisAlignment.start,
                                         children: [
                                           Padding(
-                                            padding: EdgeInsets.only(left: 10),
+                                            padding: const EdgeInsets.only(left: 10),
                                             child: Align(
                                               alignment: Alignment.centerLeft,
                                               child: Container(
@@ -487,7 +483,7 @@ class _FormPengaduanState extends State<FormPengaduan> {
                                             },
                                           ),
                                           Padding(
-                                            padding: EdgeInsets.only(left: 18, bottom: 5),
+                                            padding: const EdgeInsets.only(left: 18, bottom: 5),
                                             child: SizedBox(
                                               width: 350,
                                               height: 30,

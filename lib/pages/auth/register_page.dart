@@ -1,6 +1,6 @@
 import 'package:c22_101/helper/helper_function.dart';
 import 'package:c22_101/pages/auth/login_page.dart';
-import 'package:c22_101/pages/home_chat_page.dart';
+import 'package:c22_101/pages/main_page.dart';
 import 'package:c22_101/service/auth_service.dart';
 import 'package:c22_101/widgets/widgets.dart';
 import 'package:flutter/gestures.dart';
@@ -119,7 +119,7 @@ class _RegisterPageState extends State<RegisterPage> {
                           height: 50,
                           child: ElevatedButton(
                             style: ElevatedButton.styleFrom(
-                                primary: Theme.of(context).primaryColor,
+                                backgroundColor: Theme.of(context).primaryColor,
                                 elevation: 0,
                                 shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(10))),
@@ -172,11 +172,11 @@ class _RegisterPageState extends State<RegisterPage> {
           .registerUserWithEmailandPassword(fullName, email, password)
           .then((value) async {
         if (value == true) {
-          // saving the shared preference state
           await HelperFunctions.saveUserLoggedInStatus(true);
           await HelperFunctions.saveUserEmail(email);
           await HelperFunctions.saveUserName(fullName);
-          nextScreenReplace(context, const HomeChatPage());
+          // ignore: use_build_context_synchronously
+          nextScreenReplace(context, const MainPage());
         } else {
           showSnackbar(context, Colors.red, value);
           setState(() {

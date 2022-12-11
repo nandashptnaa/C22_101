@@ -1,12 +1,9 @@
 import 'package:shared_preferences/shared_preferences.dart';
 
 class HelperFunctions {
-  //keys
   static String userLoggedInKey = "LOGGEDINKEY";
   static String userNameKey = "USERNAMEKEY";
-  static String userEmailKey = "USEREMAILKEY";
-
-  // saving the data to SF
+  static String userEmailKey = "USEREMAILKEY";  
 
   static Future<bool> saveUserLoggedInStatus(bool isUserLoggedIn) async {
     SharedPreferences sf = await SharedPreferences.getInstance();
@@ -22,8 +19,6 @@ class HelperFunctions {
     SharedPreferences sf = await SharedPreferences.getInstance();
     return await sf.setString(userEmailKey, userEmail);
   }
-
-  // getting the data from SF
 
   static Future<bool?> getUserLoggedStatus() async {
     SharedPreferences sf = await SharedPreferences.getInstance();
@@ -42,29 +37,18 @@ class HelperFunctions {
 }
 
 class HelperFunctionsAdmin {
-  //keys
-  static String adminLoggedInKey = "LOGGEDINKEY";
-  static String adminNameKey = "USERNAMEKEY";
+  static String adminLoggedInKey = "LOGGEDINKEY";  
   static String adminEmailKey = "USEREMAILKEY";
-
-  // saving the data to SF
 
   static Future<bool> saveAdminLoggedStatus(bool isAdminLoggedIn) async {
     SharedPreferences sf = await SharedPreferences.getInstance();
     return await sf.setBool(adminLoggedInKey, isAdminLoggedIn);
   }
 
-  static Future<bool> saveUserNameAdmin(String userNameAdmin) async {
-    SharedPreferences sf = await SharedPreferences.getInstance();
-    return await sf.setString(adminNameKey, userNameAdmin);
-  }
-
   static Future<bool> saveAdminEmail(String adminEmail) async {
     SharedPreferences sf = await SharedPreferences.getInstance();
     return await sf.setString(adminEmailKey, adminEmail);
   }
-
-  // getting the data from SF
 
   static Future<bool?> getAdminLoggedStatus() async {
     SharedPreferences sf = await SharedPreferences.getInstance();
@@ -75,20 +59,12 @@ class HelperFunctionsAdmin {
     SharedPreferences sf = await SharedPreferences.getInstance();
     return sf.getString(adminEmailKey);
   }
-
-  static Future<String?> getUserNameAdmin() async {
-    SharedPreferences sf = await SharedPreferences.getInstance();
-    return sf.getString(adminNameKey);
-  }
 }
 
-class HelperFunctionsSupAdmin {
-  //keys
+class HelperFunctionsSupAdmin {  
   static String supAdminLoggedInKey = "LOGGEDINKEY";
   static String supAdminNameKey = "USERNAMEKEY";
   static String supAdminEmailKey = "USEREMAILKEY";
-
-  // saving the data to SF
 
   static Future<bool> saveSupAdminLoggedStatus(bool isAdminLoggedIn) async {
     SharedPreferences sf = await SharedPreferences.getInstance();
@@ -104,8 +80,6 @@ class HelperFunctionsSupAdmin {
     SharedPreferences sf = await SharedPreferences.getInstance();
     return await sf.setString(supAdminEmailKey, adminEmail);
   }
-
-  // getting the data from SF
 
   static Future<bool?> getSupAdminLoggedStatus() async {
     SharedPreferences sf = await SharedPreferences.getInstance();

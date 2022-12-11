@@ -1,4 +1,4 @@
-import 'package:c22_101/pages/home_chat_page.dart';
+import 'package:c22_101/chat/home_chat_page.dart';
 import 'package:c22_101/service/database_service.dart';
 import 'package:c22_101/widgets/widgets.dart';
 import 'package:firebase_auth/firebase_auth.dart';

@@ -20,7 +20,7 @@ class AppDecoration {
             blurRadius: getHorizontalSize(
               2.00,
             ),
-            offset: Offset(
+            offset: const Offset(
               0,
               4,
             ),
@@ -44,7 +44,7 @@ class AppDecoration {
             blurRadius: getHorizontalSize(
               2.00,
             ),
-            offset: Offset(
+            offset: const Offset(
               0,
               4,
             ),
@@ -92,7 +92,7 @@ class AppDecoration {
             blurRadius: getHorizontalSize(
               2.00,
             ),
-            offset: Offset(
+            offset: const Offset(
               0,
               4,
             ),
@@ -164,14 +164,14 @@ class AppDecoration {
             blurRadius: getHorizontalSize(
               2.00,
             ),
-            offset: Offset(
+            offset: const Offset(
               0,
               2,
             ),
           ),
         ],
       );
-  static BoxDecoration get txtOutlineBlack9003f => BoxDecoration();
+  static BoxDecoration get txtOutlineBlack9003f => const BoxDecoration();
   static BoxDecoration get outlineBlack9003f1 => BoxDecoration(
         color: ColorConstant.indigo901,
         boxShadow: [
@@ -183,7 +183,7 @@ class AppDecoration {
             blurRadius: getHorizontalSize(
               2.00,
             ),
-            offset: Offset(
+            offset: const Offset(
               0,
               2,
             ),
@@ -201,7 +201,7 @@ class AppDecoration {
             blurRadius: getHorizontalSize(
               2.00,
             ),
-            offset: Offset(
+            offset: const Offset(
               0,
               4,
             ),

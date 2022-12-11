@@ -1,5 +1,5 @@
 import 'package:c22_101/helper/helper_function.dart';
-import 'package:c22_101/pages/chat_page.dart';
+import 'package:c22_101/chat/chat_page.dart';
 import 'package:c22_101/service/database_service.dart';
 import 'package:c22_101/widgets/widgets.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -175,6 +175,7 @@ class _SearchPageState extends State<SearchPage> {
             setState(() {
               isJoined = !isJoined;
             });
+            // ignore: use_build_context_synchronously
             showSnackbar(context, Colors.green, "Successfully joined he group");
             Future.delayed(const Duration(seconds: 2), () {
               nextScreen(

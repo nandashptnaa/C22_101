@@ -4,13 +4,11 @@ class DatabaseService {
   final String? uid;
   DatabaseService({this.uid});
 
-  // reference for our collections
   final CollectionReference userCollection =
       FirebaseFirestore.instance.collection("users");
   final CollectionReference groupCollection =
       FirebaseFirestore.instance.collection("groups");
 
-  // saving the userdata
   Future savingUserData(String fullName, String email) async {
     return await userCollection.doc(uid).set({
       "fullName": fullName,
@@ -21,14 +19,12 @@ class DatabaseService {
     });
   }
 
-  // getting user data
   Future gettingUserData(String email) async {
     QuerySnapshot snapshot =
         await userCollection.where("email", isEqualTo: email).get();
     return snapshot;
   }
 
-  // get user groups
   getUserGroups() async {
     return userCollection.doc(uid).snapshots();
   }
@@ -44,7 +40,6 @@ class DatabaseService {
       "recentMessage": "",
       "recentMessageSender": "",
     });
-    // update the members
     await groupDocumentReference.update({
       "members": FieldValue.arrayUnion(["${uid}_$userName"]),
       "groupId": groupDocumentReference.id,
@@ -57,7 +52,6 @@ class DatabaseService {
     });
   }
 
-  // getting the chats
   getChats(String groupId) async {
     return groupCollection
         .doc(groupId)
@@ -72,17 +66,14 @@ class DatabaseService {
     return documentSnapshot['admin'];
   }
 
-  // get group members
   getGroupMembers(groupId) async {
     return groupCollection.doc(groupId).snapshots();
   }
 
-  // search
   searchByName(String groupName) {
     return groupCollection.where("groupName", isEqualTo: groupName).get();
   }
 
-  // function -> bool
   Future<bool> isUserJoined(
       String groupName, String groupId, String userName) async {
     DocumentReference userDocumentReference = userCollection.doc(uid);
@@ -96,35 +87,32 @@ class DatabaseService {
     }
   }
 
-  // toggling the group join/exit
   Future toggleGroupJoin(
       String groupId, String userName, String groupName) async {
-    // doc reference
-    DocumentReference userDocumentReference = userCollection.doc(uid);
-    DocumentReference groupDocumentReference = groupCollection.doc(groupId);
+    
+      DocumentReference userDocumentReference = userCollection.doc(uid);
+      DocumentReference groupDocumentReference = groupCollection.doc(groupId);
 
-    DocumentSnapshot documentSnapshot = await userDocumentReference.get();
-    List<dynamic> groups = await documentSnapshot['groups'];
-
-    // if user has our groups -> then remove then or also in other part re join
-    if (groups.contains("${groupId}_$groupName")) {
-      await userDocumentReference.update({
-        "groups": FieldValue.arrayRemove(["${groupId}_$groupName"])
-      });
-      await groupDocumentReference.update({
-        "members": FieldValue.arrayRemove(["${uid}_$userName"])
-      });
-    } else {
-      await userDocumentReference.update({
-        "groups": FieldValue.arrayUnion(["${groupId}_$groupName"])
-      });
-      await groupDocumentReference.update({
-        "members": FieldValue.arrayUnion(["${uid}_$userName"])
-      });
-    }
+      DocumentSnapshot documentSnapshot = await userDocumentReference.get();
+      List<dynamic> groups = await documentSnapshot['groups'];
+    
+      if (groups.contains("${groupId}_$groupName")) {
+        await userDocumentReference.update({
+          "groups": FieldValue.arrayRemove(["${groupId}_$groupName"])
+        });
+        await groupDocumentReference.update({
+          "members": FieldValue.arrayRemove(["${uid}_$userName"])
+        });
+      } else {
+        await userDocumentReference.update({
+          "groups": FieldValue.arrayUnion(["${groupId}_$groupName"])
+        });
+        await groupDocumentReference.update({
+          "members": FieldValue.arrayUnion(["${uid}_$userName"])
+        });
+      }
   }
 
-  // send message
   sendMessage(String groupId, Map<String, dynamic> chatMessageData) async {
     groupCollection.doc(groupId).collection("messages").add(chatMessageData);
     groupCollection.doc(groupId).update({
@@ -139,22 +127,16 @@ class DatabaseServiceAdmin {
   final String? uid;
   DatabaseServiceAdmin({this.uid});
 
-  // reference for our collections
   final CollectionReference adminCollection =
       FirebaseFirestore.instance.collection("admin");  
 
-  // saving the userdata
   Future savingAdminData(String fullName, String email) async {
     return await adminCollection.doc(uid).set({
-      "fullName": fullName,
       "email": email,
-      "groups": [],
-      "profilePic": "",
       "uid": uid,
     });
   }
 
-  // getting user data
   Future gettingAdminData(String email) async {
     QuerySnapshot snapshot =
         await adminCollection.where("email", isEqualTo: email).get();
@@ -166,11 +148,9 @@ class DatabaseServiceSupAdmin {
   final String? uid;
   DatabaseServiceSupAdmin({this.uid});
 
-  // reference for our collections
   final CollectionReference supAdminCollection =
-      FirebaseFirestore.instance.collection("super admin");  
+    FirebaseFirestore.instance.collection("super admin");  
 
-  // saving the userdata
   Future savingSupAdminData(String fullName, String email) async {
     return await supAdminCollection.doc(uid).set({
       "fullName": fullName,
@@ -179,7 +159,6 @@ class DatabaseServiceSupAdmin {
     });
   }
 
-  // getting user data
   Future gettingSupAdminData(String email) async {
     QuerySnapshot snapshot =
         await supAdminCollection.where("email", isEqualTo: email).get();

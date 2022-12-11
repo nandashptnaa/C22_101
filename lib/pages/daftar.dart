@@ -1,20 +1,10 @@
-import 'dart:ui';
-import 'package:c22_101/common/decoration.dart';
-import 'package:c22_101/common/image_view.dart';
-import 'package:c22_101/common/style.dart';
 import 'package:c22_101/helper/helper_function.dart';
 import 'package:c22_101/pages/auth/login_admin_page.dart';
 import 'package:c22_101/pages/auth/login_page.dart';
-import 'package:c22_101/pages/auth/regis_admin_page.dart';
 import 'package:c22_101/pages/auth/register_page.dart';
-import 'package:c22_101/utils/color.dart';
-import 'package:c22_101/utils/utils.dart';
-import 'package:c22_101/utils/utils_font.dart';
-import 'package:c22_101/utils/utils_image.dart';
 import 'package:c22_101/widgets/widgets.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get_utils/get_utils.dart';
 
 class HomeDaftar extends StatefulWidget {
   const HomeDaftar({super.key});

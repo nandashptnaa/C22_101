@@ -1,11 +1,13 @@
-import 'package:c22_101/chating/profile.dart';
+import 'package:c22_101/article/pages/home_page.dart';
+import 'package:c22_101/chat/home_chat_page.dart';
 import 'package:c22_101/common/decoration.dart';
 import 'package:c22_101/common/image_view.dart';
-import 'package:c22_101/common/style.dart';
 import 'package:c22_101/helper/helper_function.dart';
-import 'package:c22_101/pages/auth/login_page.dart';
-import 'package:c22_101/pages/home_chat_page.dart';
+import 'package:c22_101/location/location.dart';
+import 'package:c22_101/pages/contact.dart';
+import 'package:c22_101/pages/daftar.dart';
 import 'package:c22_101/pages/pengaduan_page.dart';
+import 'package:c22_101/pages/profile_page.dart';
 import 'package:c22_101/pages/protect_self_page.dart';
 import 'package:c22_101/service/auth_service.dart';
 import 'package:c22_101/shared/constants.dart';
@@ -13,7 +15,6 @@ import 'package:c22_101/utils/utils.dart';
 import 'package:c22_101/utils/utils_image.dart';
 import 'package:c22_101/widgets/widgets.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({super.key});
@@ -78,7 +79,7 @@ class _MainPageState extends State<MainPage> {
                 size: 35,
               ),
               onPressed: () {
-                nextScreen(context, ProfilePage());
+                nextScreen(context, ProfilePage(email: email, userName: userName,));
               },
             )
           ],
@@ -98,7 +99,31 @@ class _MainPageState extends State<MainPage> {
               ),
               const Divider(
                 height: 2,
-              ),              
+              ),
+              ListTile(
+                onTap: () {
+                  nextScreen(context, const Location());
+                },
+                contentPadding:
+                    const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+                leading: const Icon(Icons.announcement),
+                title: const Text(
+                  "Location",
+                  style: TextStyle(color: Colors.black),
+                ),
+              ),
+              ListTile(
+                onTap: () {
+                  nextScreen(context, const ListContactPage());
+                },
+                contentPadding:
+                    const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+                leading: const Icon(Icons.contact_phone),
+                title: const Text(
+                  "Contact",
+                  style: TextStyle(color: Colors.black),
+                ),
+              ),
               ListTile(
                 onTap: () {},
                 contentPadding:
@@ -142,10 +167,11 @@ class _MainPageState extends State<MainPage> {
                             IconButton(
                               onPressed: () async {
                                 await authService.signOut();
+                                // ignore: use_build_context_synchronously
                                 Navigator.of(context).pushAndRemoveUntil(
                                     MaterialPageRoute(
                                         builder: (context) =>
-                                            const LoginPage()),
+                                            const HomeDaftar()),
                                     (route) => false);
                               },
                               icon: const Icon(
@@ -284,7 +310,7 @@ class _MainPageState extends State<MainPage> {
                         height: 50,
                         child: ElevatedButton(
                           onPressed: (() {
-                            nextScreen(context, const PengaduanPage());
+                            nextScreen(context, const HomeChatPage());
                           }),
                           style: ElevatedButton.styleFrom(
                             backgroundColor: const Color(0xff1c1a67),
@@ -337,7 +363,7 @@ class _MainPageState extends State<MainPage> {
                               height: 60,
                               child: ElevatedButton(
                                 onPressed: (() {
-                                  // nextScreen(context, const ProtectSelfPage());
+                                  nextScreen(context, const HomePageArticle());
                                 }),
                                 style: ElevatedButton.styleFrom(
                                   backgroundColor: const Color(0xffffffff),

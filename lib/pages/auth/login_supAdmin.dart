@@ -1,6 +1,6 @@
+// ignore: file_names
 import 'package:c22_101/helper/helper_function.dart';
 import 'package:c22_101/pages/auth/login_page.dart';
-import 'package:c22_101/pages/auth/regis_admin_page.dart';
 import 'package:c22_101/pages/super%20admin/home_supAdmin.dart';
 import 'package:c22_101/service/auth_service.dart';
 import 'package:c22_101/service/database_service.dart';
@@ -101,7 +101,7 @@ class _LoginSupAdminPageState extends State<LoginSupAdminPage> {
                           height: 50,
                           child: ElevatedButton(
                             style: ElevatedButton.styleFrom(
-                                primary: Theme.of(context).primaryColor,
+                                backgroundColor: Theme.of(context).primaryColor,
                                 elevation: 0,
                                 shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(10))),
@@ -147,7 +147,6 @@ class _LoginSupAdminPageState extends State<LoginSupAdminPage> {
           QuerySnapshot snapshot =
               await DatabaseServiceSupAdmin(uid: FirebaseAuth.instance.currentUser!.uid)
                   .gettingSupAdminData(email);
-          // saving the values to our shared preferences
           await HelperFunctionsSupAdmin.saveSupAdminLoggedStatus(true);
           await HelperFunctionsSupAdmin.saveSupAdminEmail(email);
           await HelperFunctionsSupAdmin.saveUserNameSupAdmin(snapshot.docs[0]['fullName']);

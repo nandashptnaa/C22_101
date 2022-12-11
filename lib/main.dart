@@ -1,6 +1,7 @@
 import 'package:c22_101/helper/helper_function.dart';
 import 'package:c22_101/pages/daftar.dart';
 import 'package:c22_101/shared/constants.dart';
+import 'package:c22_101/splash_screen/load_page.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -56,7 +57,7 @@ class _MyAppState extends State<MyApp> {
           primaryColor: Constants().primaryColor,
           scaffoldBackgroundColor: Colors.white),
       debugShowCheckedModeBanner: false,
-      home: _isSignedIn ? const HomeDaftar() : const HomeDaftar(),
+      home: _isSignedIn ? const HomeDaftar(): const Load_page(),
     );
   }
 }

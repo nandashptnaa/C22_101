@@ -1,6 +1,6 @@
 import 'package:c22_101/helper/helper_function.dart';
-import 'package:c22_101/pages/auth/regis_admin_page.dart';
-import 'package:c22_101/pages/admin/home_admin.dart';
+import 'package:c22_101/pages/admin/contact/contact_page.dart';
+import 'package:c22_101/pages/auth/login_supAdmin.dart';
 import 'package:c22_101/service/auth_service.dart';
 import 'package:c22_101/service/database_service.dart';
 import 'package:c22_101/widgets/widgets.dart';
@@ -120,13 +120,13 @@ class _LoginAdminPageState extends State<LoginAdminPage> {
                         ),
                         const SizedBox(height: 10,),
                         Text.rich(TextSpan(
-                          text: "Masuk sebagai super user",
+                          text: "Masuk sebagai super admin",
                           style: const TextStyle(
                             color: Colors.black, fontSize: 16
                           ),
                           recognizer: TapGestureRecognizer()
                             ..onTap = () {
-                            nextScreen(context, const RegisterSupAdminPage());
+                            nextScreen(context, const LoginSupAdminPage());
                           }                          
                         )),
                         const SizedBox(height: 10,),
@@ -158,13 +158,11 @@ class _LoginAdminPageState extends State<LoginAdminPage> {
         if (value == true) {
           QuerySnapshot snapshot =
               await DatabaseServiceAdmin(uid: FirebaseAuth.instance.currentUser!.uid)
-                  .gettingAdminData(email);
-          // saving the values to our shared preferences
+                  .gettingAdminData(email);          
           await HelperFunctionsAdmin.saveAdminLoggedStatus(true);
-          await HelperFunctionsAdmin.saveAdminEmail(email);
-          await HelperFunctionsAdmin.saveUserNameAdmin(snapshot.docs[0]['fullName']);
+          await HelperFunctionsAdmin.saveAdminEmail(email);          
           // ignore: use_build_context_synchronously
-          nextScreenReplace(context, const HomePageAdmin());
+          nextScreenReplace(context, const ContactPage());
         } else {
           showSnackbar(context, Colors.red, value);
           setState(() {

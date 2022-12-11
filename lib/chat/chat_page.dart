@@ -1,4 +1,4 @@
-import 'package:c22_101/pages/group_info.dart';
+import 'package:c22_101/chat/group_info.dart';
 import 'package:c22_101/service/database_service.dart';
 import 'package:c22_101/widgets/message_tile.dart';
 import 'package:c22_101/widgets/widgets.dart';

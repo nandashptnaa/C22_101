@@ -1,9 +1,5 @@
 import 'package:c22_101/helper/helper_function.dart';
-import 'package:c22_101/pages/auth/login_page.dart';
-import 'package:c22_101/pages/main_page.dart';
-import 'package:c22_101/pages/pengaduan_page.dart';
-import 'package:c22_101/pages/profile_page.dart';
-import 'package:c22_101/pages/search_page.dart';
+import 'package:c22_101/chat/search_page.dart';
 import 'package:c22_101/service/auth_service.dart';
 import 'package:c22_101/service/database_service.dart';
 import 'package:c22_101/widgets/group_tile.dart';
@@ -84,132 +80,7 @@ class _HomeChatPageState extends State<HomeChatPage> {
               color: Colors.white, fontWeight: FontWeight.bold, fontSize: 27),
         ),
       ),
-      // drawer: Drawer(
-      //     child: ListView(
-      //   padding: const EdgeInsets.symmetric(vertical: 50),
-      //   children: <Widget>[
-      //     Icon(
-      //       Icons.account_circle,
-      //       size: 150,
-      //       color: Colors.grey[700],
-      //     ),
-      //     const SizedBox(
-      //       height: 15,
-      //     ),
-      //     Text(
-      //       userName,
-      //       textAlign: TextAlign.center,
-      //       style: const TextStyle(fontWeight: FontWeight.bold),
-      //     ),
-      //     const SizedBox(
-      //       height: 30,
-      //     ),
-      //     const Divider(
-      //       height: 2,
-      //     ),
-      //     ListTile(
-      //       onTap: () {Navigator.push(context, MaterialPageRoute(builder: ((context) => const HomeChatPage())));},
-      //       selectedColor: Theme.of(context).primaryColor,
-      //       selected: true,
-      //       contentPadding:
-      //           const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
-      //       leading: const Icon(Icons.group),
-      //       title: const Text(
-      //         "Chat Konsultasi",
-      //         style: TextStyle(color: Colors.black),
-      //       ),
-      //     ),
-      //     ListTile(
-      //       onTap: () {
-      //         nextScreenReplace(
-      //             context,
-      //             const PengaduanPage());
-      //       },
-      //       contentPadding:
-      //           const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
-      //       leading: const Icon(Icons.group),
-      //       title: const Text(
-      //         "Adukan Saja!",
-      //         style: TextStyle(color: Colors.black),
-      //       ),
-      //     ),
-      //     ListTile(
-      //       onTap: () {
-      //         nextScreenReplace(
-      //             context,
-      //             const MainPage());
-      //       },
-      //       contentPadding:
-      //           const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
-      //       leading: const Icon(Icons.group),
-      //       title: const Text(
-      //         "Home",
-      //         style: TextStyle(color: Colors.black),
-      //       ),
-      //     ),
-      //     ListTile(
-      //       onTap: () {
-      //         nextScreenReplace(
-      //             context,
-      //             ProfilePage(
-      //               userName: userName,
-      //               email: email,
-      //             ));
-      //       },
-      //       contentPadding:
-      //           const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
-      //       leading: const Icon(Icons.group),
-      //       title: const Text(
-      //         "Profile",
-      //         style: TextStyle(color: Colors.black),
-      //       ),
-      //     ),
-      //     ListTile(
-      //       onTap: () async {
-      //         showDialog(
-      //             barrierDismissible: false,
-      //             context: context,
-      //             builder: (context) {
-      //               return AlertDialog(
-      //                 title: const Text("Logout"),
-      //                 content: const Text("Are you sure you want to logout?"),
-      //                 actions: [
-      //                   IconButton(
-      //                     onPressed: () {
-      //                       Navigator.pop(context);
-      //                     },
-      //                     icon: const Icon(
-      //                       Icons.cancel,
-      //                       color: Colors.red,
-      //                     ),
-      //                   ),
-      //                   IconButton(
-      //                     onPressed: () async {
-      //                       await authService.signOut();
-      //                       Navigator.of(context).pushAndRemoveUntil(
-      //                           MaterialPageRoute(
-      //                               builder: (context) => const LoginPage()),
-      //                           (route) => false);
-      //                     },
-      //                     icon: const Icon(
-      //                       Icons.done,
-      //                       color: Colors.green,
-      //                     ),
-      //                   ),
-      //                 ],
-      //               );
-      //             });
-      //       },
-      //       contentPadding:
-      //           const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
-      //       leading: const Icon(Icons.exit_to_app),
-      //       title: const Text(
-      //         "Logout",
-      //         style: TextStyle(color: Colors.black),
-      //       ),
-      //     )
-      //   ],
-      // )),
+      
       body: groupList(),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
@@ -274,7 +145,7 @@ class _HomeChatPageState extends State<HomeChatPage> {
                     Navigator.of(context).pop();
                   },
                   style: ElevatedButton.styleFrom(
-                      primary: Theme.of(context).primaryColor),
+                      backgroundColor: Theme.of(context).primaryColor),
                   child: const Text("CANCEL"),
                 ),
                 ElevatedButton(
@@ -296,7 +167,7 @@ class _HomeChatPageState extends State<HomeChatPage> {
                     }
                   },
                   style: ElevatedButton.styleFrom(
-                      primary: Theme.of(context).primaryColor),
+                      backgroundColor: Theme.of(context).primaryColor),
                   child: const Text("CREATE"),
                 )
               ],
@@ -360,7 +231,7 @@ class _HomeChatPageState extends State<HomeChatPage> {
             height: 20,
           ),
           const Text(
-            "You've not joined any groups, tap on the add icon to create a group or also search from top search button.",
+            "Anda belum bergabung dengan grup apa pun, ketuk ikon tambahkan untuk membuat grup atau juga mencari dari tombol pencarian atas.",
             textAlign: TextAlign.center,
           )
         ],

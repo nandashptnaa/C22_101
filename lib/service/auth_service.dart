@@ -5,7 +5,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 class AuthService {
   final FirebaseAuth firebaseAuth = FirebaseAuth.instance;
 
-  // login
   Future loginWithUserNameandPassword(String email, String password) async {
     try {
       User user = (await firebaseAuth.signInWithEmailAndPassword(
@@ -20,7 +19,6 @@ class AuthService {
     }
   }
 
-  // register
   Future registerUserWithEmailandPassword(
       String fullName, String email, String password) async {
     try {
@@ -29,7 +27,6 @@ class AuthService {
           .user!;
 
       if (user != null) {
-        // call our database service to update the user data.
         await DatabaseService(uid: user.uid).savingUserData(fullName, email);
         return true;
       }
@@ -38,7 +35,6 @@ class AuthService {
     }
   }
 
-  // signout
   Future signOut() async {
     try {
       await HelperFunctions.saveUserLoggedInStatus(false);
@@ -54,7 +50,6 @@ class AuthService {
 class AuthServiceAdmin {
   final FirebaseAuth adminAuth = FirebaseAuth.instance;
 
-  // login
   Future loginAdminNameandPassword(String email, String password) async {
     try {
       User admin = (await adminAuth.signInWithEmailAndPassword(
@@ -69,7 +64,6 @@ class AuthServiceAdmin {
     }
   }
 
-  // register
   Future registerAdminEmailandPassword(
       String fullName, String email, String password) async {
     try {
@@ -78,7 +72,6 @@ class AuthServiceAdmin {
           .user!;
 
       if (admin != null) {
-        // call our database service to update the user data.
         await DatabaseServiceAdmin(uid: admin.uid).savingAdminData(fullName, email);
         return true;
       }
@@ -87,7 +80,6 @@ class AuthServiceAdmin {
     }
   }
 
-  // signout
   Future signOut() async {
     try {
       await HelperFunctions.saveUserLoggedInStatus(false);
@@ -103,7 +95,6 @@ class AuthServiceAdmin {
 class AuthServiceSupAdmin {
   final FirebaseAuth supAdminAuth = FirebaseAuth.instance;
 
-  // login
   Future loginSupAdminNameandPassword(String email, String password) async {
     try {
       User supAdmin = (await supAdminAuth.signInWithEmailAndPassword(
@@ -118,7 +109,6 @@ class AuthServiceSupAdmin {
     }
   }
 
-  // register
   Future registerSupAdminEmailandPassword(
       String fullName, String email, String password) async {
     try {
@@ -127,7 +117,6 @@ class AuthServiceSupAdmin {
           .user!;
 
       if (supAdmin != null) {
-        // call our database service to update the user data.
         await DatabaseServiceSupAdmin(uid: supAdmin.uid).savingSupAdminData(fullName, email);
         return true;
       }
@@ -136,7 +125,6 @@ class AuthServiceSupAdmin {
     }
   }
 
-  // signout
   Future signOut() async {
     try {
       await HelperFunctionsSupAdmin.saveSupAdminLoggedStatus(false);
